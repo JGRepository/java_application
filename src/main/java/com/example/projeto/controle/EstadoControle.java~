@@ -44,7 +44,7 @@ public class EstadoControle {
     public ModelAndView remover(@PathVariable("id") Long id) {
         Optional<Estado> estado = estadoRepositorio.findById(id);
         estadoRepositorio.delete(estado.get());
-        return listar();
+        return listar()
     }
 
     @GetMapping ("/listarEstado")

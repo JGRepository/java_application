@@ -8,6 +8,6 @@
 <body>
 <h1>Olá Mundo</h1>
 <a href="/cadastroEstado">Cadastrar Estado</a>
-<a href="/listarEstado">Listar</a>
+<a href="/listarEstados">Listar</a>
 </body>
 </html>
