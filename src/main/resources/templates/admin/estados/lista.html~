@@ -1,20 +1,50 @@
 <!DOCTYPE html>
-<html 
-      xmlns:th="https://thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html
+        xmlns:th="https://thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edição de Estados</title>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Link para o Bootstrap (CDN) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ12N8Exm5jIh0PnJ4drjGb5q2js9ihWbxZIxWExYQqtGhpBkb84h8wAnFdw" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" />
+
+
+    <title>Lista de Estados</title>
 </head>
-<body>
-<div class="container mt-4">
-    <h1 class="mb-4">Edição de Estados</h1>
 
-    <table class="table table-bordered">
+<body>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSOigUZ54UcABT5hi1EaNQ9jne9NF14N1DKw&s" width="30" height="30" alt="">
+    <a class="navbar-brand" href="/admin">Projeto Java</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado"
+            aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(página atual)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container">
+    <table class="table table-bordered" id="tabela">
         <thead class="thead-dark">
         <tr>
             <th>ID</th>
@@ -23,21 +53,43 @@
             <th>Ação</th>
         </tr>
         </thead>
-        <tbody th:each="estado : ${listaEstados}">
-        <tr>
+        <tbody>
+        <tr th:each="estado : ${listaEstados}">
             <td th:text="${estado.id}"></td>
             <td th:text="${estado.nome}"></td>
             <td th:text="${estado.sigla}"></td>
-            <td>
-                <a th:href="@{/editarEstado/{id}(id=${estado.id})}" class="btn btn-primary btn-sm">Editar</a>
-                <a th:href="@{/removerEstado/{id}(id=${estado.id})}" class="btn btn-danger btn-sm">Remover</a>
+            <td >
+                <a th:href="@{/editarEstado/{id}(id=${estado.id})}"><i class="fa-solid fa-pen-to-square" style="color: #38588f;"></i></a>
+                <a th:href="@{/removerEstado/{id}(id=${estado.id})}"><i class="fa-solid fa-trash" style="color: #ee2c17;"></i></a>
             </td>
         </tr>
         </tbody>
     </table>
+    <a href="/admin" class="btn btn-danger"><i class="fa-solid fa-rotate-left"></i> Voltar</a>
+    <a href="/cadastroEstado" class="btn btn-primary"><i class="fa-solid fa-circle-plus"></i> Cadastrar Estado</a>
 </div>
+<!-- JavaScript (Opcional) -->
+<!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 
-<!-- Script do Bootstrap (opcional, para funcionalidades JS como dropdowns, modais, etc.) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0YQeoP0KjhZSL4aM9cD0mY7v7n01B7kZOwKwXebqmxzSA5w1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" />
+
+<script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
+<script>
+        $(document).ready( function () {
+        $('#tabela').DataTable();
+        } );
+</script>
 </body>
+
 </html>
