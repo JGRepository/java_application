@@ -90,7 +90,7 @@
 
         var table = new DataTable('#tabela', {
         language: {
-            url: 'https://github.com/mrohnstock/datatables-plugins/blob/master/i18n/Portuguese-Brasil.json ',
+            url: 'ptTranslateJson',
     },
 });
 </script>
