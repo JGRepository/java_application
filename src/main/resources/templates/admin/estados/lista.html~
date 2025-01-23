@@ -82,13 +82,17 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" />
-
 <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
 <script>
         $(document).ready( function () {
         $('#tabela').DataTable();
         } );
+
+        var table = new DataTable('#tabela', {
+        language: {
+            url: 'https://github.com/mrohnstock/datatables-plugins/blob/master/i18n/Portuguese-Brasil.json ',
+    },
+});
 </script>
 </body>
 
